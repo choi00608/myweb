@@ -1,0 +1,223 @@
+            .copyright{
+                text-align: center;
+            }
+
+            .txt{text-align: center;}
+
+            #intro{margin-left: 10%; margin-right: 10%;}
+
+            ul{
+                list-style: none;
+                text-align: left;
+            }
+
+            #menu_panel{
+                display: none;
+            }
+
+            #head{
+                margin:0;
+                background-color: rgb(210, 233, 233);
+            }
+
+            /*======================================================================================*/
+
+            @media screen and (max-width: 799px){                          /*스마트폰*/
+                
+                body{
+                    margin: 0;
+                    background-color: rgba(210, 233, 233, 0.4)
+                }
+    
+                #menu_bar{
+                    height: 60px; 
+                    width: 100%; 
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+    
+                #menu_box{
+                    height: 40px; 
+                    width: 50px;
+                    margin-top: 30px;
+                    background-image: url(img/menuicon.svg);
+                    background-size:cover;
+                    background-position-y: center;
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                    left: 5%;
+                    transform: translate(-50%, -50%);
+                    border-style: none;
+                }
+    
+                #top_dummy{
+                    height: 60px;
+                }
+
+                #menu_panel{
+                    height:auto;
+                    width: 100%;
+                    position: fixed;
+                    background-color: rgb(196, 223, 223);
+                    text-align: center;
+                    display: none;
+                }
+    
+                .menu_button{
+                    border:none;
+                    background-color: rgb(196, 223, 223);
+                    display:block;
+                    height: 40px;
+                }
+                .menu_button:hover{
+                    color: rgba(0, 0, 0, 0.6);
+                }
+    
+                #name{
+                    margin-top: 30px;
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    font-size: 25px; 
+                    font-weight: bold;
+                }
+
+                .navbar_name{
+                    display: none;
+                }
+
+                img{
+                    width: 400px;
+                    display: block;
+                    margin:auto;
+                }
+    
+                .txt{text-align: center;}
+                .txt:nth-child(1){margin:0;}
+    
+                #genesis{
+                    margin-left: 15%;
+                    margin-right:15%;
+                }
+                
+                .contents{
+                    display : none;
+                }
+                
+                a{
+                    font-size: x-small;
+                }
+
+                #sns_a{
+                    text-align: center;
+                }
+
+                #sns{
+                    width: 30px;
+                    display: inline;
+                }
+
+            }
+
+            /*======================================================================================*/
+
+            @media screen and (min-width: 800px){                           /*컴퓨터*/
+
+                body{
+                    margin: 0;
+                    background-color: rgba(210, 233, 233, 0.4)
+                }
+    
+                #menu_bar{
+                    height: 100%; 
+                    width: 60px; 
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                }
+    
+                #menu_box{
+                    display: none;
+                    height: 40px; 
+                    width: 50px;
+                    margin-left: 30px;
+                    top: 5%;
+                    background-image: url(img/menuicon.svg);
+                    background-size:cover;
+                    background-position-y: center;
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                    transform: translate(-50%, -50%);
+                    border-style: none;
+                }
+
+                .navbar_name{
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                }
+
+                #top_dummy{
+                    display: none;
+                }
+
+                #menu_panel{
+                    height:100%;
+                    width: 200px;
+                    position: fixed;
+                    background-color: rgb(196, 223, 223);
+                    float: left;
+                    display: inline;
+                }
+    
+                .menu_button{
+                    border:none;
+                    background-color: rgb(196, 223, 223);
+                    display:block;
+                    height: 40px;
+                }
+
+                .menu_button:hover{
+                    color: rgba(0, 0, 0, 0.6);
+                }
+    
+    
+                #name{
+                    display: none;
+                }
+                img{
+                    width: 400px;
+                    display: block;
+                    margin:auto;
+                }
+    
+                h1{margin: 0;}
+
+                #genesis{
+                }
+                
+                .contents{
+                    display : none;
+                    text-align: center;
+                    margin-left: 200px;
+                }
+
+                .copyright{
+                    margin-left: 200px;
+                }
+                
+                a{
+                    font-size: x-small;
+                }
+
+                #sns_a{
+                }
+
+                #sns{
+                    width: 30px;
+                    display: inline;
+                }
+
+            }
+        
