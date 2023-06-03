@@ -2,19 +2,436 @@
 <html>
     <head>
         <title>my web page</title>
+
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        
+        <script>
+
+            
+
+            $(document).ready(function(){
+
+                var contents = $(".contents");
+                var about_myself = $("#about_myself");
+                var wtf = $("#wtf");
+                var wtf2 = $("#wtf2");
+                var delay = 300;
+                var timer = null;
+
+                contents.toggle();
+                contents.children().hide();
+                contents.children("#about_myself").toggle();
+
+                $("#menu_box").click(function(){$("#menu_panel").slideToggle(200);});
+                $("#menu_button1").css("font-weight", "bold");
+                
+                function a(){
+
+                    if(outerWidth <= 799){                  /*스마트폰*/
+                        $("#menu_panel").hide();
+                        $("#menu_button1").click(function(){
+                            $(".menu_button").css("font-weight", "normal");
+                            $("#menu_button1").css("font-weight", "bold");
+                            contents.children().hide();
+                            contents.children('#about_myself').show();
+                            $("#menu_panel").slideToggle(200);
+                        });
+        
+                        $("#menu_button2").click(function(){                 
+                            $(".menu_button").css("font-weight", "normal");
+                            $("#menu_button2").css("font-weight", "bold");
+                            contents.children().hide();
+                            contents.children('#wtf').show();
+                            $("#menu_panel").slideToggle(200);
+                        });
+        
+                        $("#menu_button3").click(function(){
+                            $(".menu_button").css("font-weight", "normal");
+                            $("#menu_button3").css("font-weight", "bold");
+                            contents.children().hide();
+                            contents.children('#wtf2').show();
+                            $("#menu_panel").slideToggle(200);
+                        });
+                    }
+                    else{                  /*컴퓨터*/
+                        $("#menu_panel").toggle();
+                        $("#menu_button1").click(function(){
+                            $(".menu_button").css("font-weight", "normal");
+                            $("#menu_button1").css("font-weight", "bold");
+                            contents.children().hide();
+                            contents.children('#about_myself').show();
+                        });
+        
+                        $("#menu_button2").click(function(){                
+                            $(".menu_button").css("font-weight", "normal");
+                            $("#menu_button2").css("font-weight", "bold");
+                            contents.children().hide();
+                            contents.children('#wtf').show();
+                        });
+        
+                        $("#menu_button3").click(function(){
+                            $(".menu_button").css("font-weight", "normal");
+                            $("#menu_button3").css("font-weight", "bold");
+                            contents.children().hide();
+                            contents.children('#wtf2').show();
+                        });
+                    }
+                }
+
+                a();
+                
+                $(window).on('resize', function(){
+                    clearTimeout(timer);
+                    timer = setTimeout(function(){
+                        console.log('resize event!');
+                        a();
+                    }, delay);
+                });
+            });
+            
+                /*각 내용에 id를 부여하여 조건에 맞는 정보만 보여지게 설정*/
+        </script>
+
+        <meta name='viewport' content="user-scalable=no, initial-scal=1">
+
         <style>
-            #toptext{text-align: center;}
-            img{width: 500px;}
+            
+            .copyright{
+                text-align: center;
+            }
+
+            .txt{text-align: center;}
+
+            #intro{margin-left: 10%; margin-right: 10%;}
+
+            ul{
+                list-style: none;
+                text-align: left;
+            }
+
+            #menu_panel{
+                display: none;
+            }
+
+            /*======================================================================================*/
+
+            @media screen and (max-width: 799px){                          /*스마트폰*/
+                
+                body{
+                    margin: 0;
+                    background-color: rgba(210, 233, 233, 0.4)
+                }
+    
+                #menu_bar{
+                    height: 60px; 
+                    width: 100%; 
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+    
+                #menu_box{
+                    height: 40px; 
+                    width: 50px;
+                    margin-top: 30px;
+                    background-image: url(img/menuicon.svg);
+                    background-size:cover;
+                    background-position-y: center;
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                    left: 5%;
+                    transform: translate(-50%, -50%);
+                    border-style: none;
+                }
+    
+                #top_dummy{
+                    height: 60px;
+                }
+
+                #menu_panel{
+                    height:auto;
+                    width: 100%;
+                    position: fixed;
+                    background-color: rgb(196, 223, 223);
+                    text-align: center;
+                    display: none;
+                }
+    
+                .menu_button{
+                    border:none;
+                    background-color: rgb(196, 223, 223);
+                    display:block;
+                    height: 40px;
+                }
+                .menu_button:hover{
+                    color: rgba(0, 0, 0, 0.6);
+                }
+    
+                #name{
+                    margin-top: 30px;
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    font-size: 25px; 
+                    font-weight: bold;
+                }
+
+                .navbar_name{
+                    display: none;
+                }
+
+                img{
+                    width: 400px;
+                    display: block;
+                    margin:auto;
+                }
+    
+                .txt{text-align: center;}
+                .txt:nth-child(1){margin:0;}
+    
+                #genesis{
+                    margin-left: 15%;
+                    margin-right:15%;
+                }
+                
+                .contents{
+                    display : none;
+                }
+                
+                a{
+                    font-size: x-small;
+                }
+
+                #sns_a{
+                    text-align: center;
+                }
+
+                #sns{
+                    width: 30px;
+                    display: inline;
+                }
+
+            }
+
+            /*======================================================================================*/
+
+            @media screen and (min-width: 800px){                           /*컴퓨터*/
+
+                body{
+                    margin: 0;
+                    background-color: rgba(210, 233, 233, 0.4)
+                }
+    
+                #menu_bar{
+                    height: 100%; 
+                    width: 60px; 
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                }
+    
+                #menu_box{
+                    display: none;
+                    height: 40px; 
+                    width: 50px;
+                    margin-left: 30px;
+                    top: 5%;
+                    background-image: url(img/menuicon.svg);
+                    background-size:cover;
+                    background-position-y: center;
+                    background-color: rgb(196, 223, 223);
+                    position: fixed;
+                    transform: translate(-50%, -50%);
+                    border-style: none;
+                }
+
+                .navbar_name{
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                }
+
+                #top_dummy{
+                    display: none;
+                }
+
+                #menu_panel{
+                    height:100%;
+                    width: 200px;
+                    position: fixed;
+                    background-color: rgb(196, 223, 223);
+                    float: left;
+                }
+    
+                .menu_button{
+                    border:none;
+                    background-color: rgb(196, 223, 223);
+                    display:block;
+                    height: 40px;
+                }
+
+                .menu_button:hover{
+                    color: rgba(0, 0, 0, 0.6);
+                }
+    
+    
+                #name{
+                    display: none;
+                }
+                img{
+                    width: 400px;
+                    display: block;
+                    margin:auto;
+                }
+    
+                h1{margin: 0;}
+
+                #genesis{
+                }
+                
+                .contents{
+                    display : none;
+                    text-align: center;
+                    margin-left: 200px;
+                }
+
+                .copyright{
+                    margin-left: 200px;
+                }
+                
+                a{
+                    font-size: x-small;
+                }
+
+                #sns_a{
+                }
+
+                #sns{
+                    width: 30px;
+                    display: inline;
+                }
+
+            }
+            
         </style>
+        
+
     </head>
-    <body>
-        <h1 id="toptext">DEAD or ALIVE</h1>
-        <img src="ji.png">
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nobis reiciendis fuga ratione, doloremque veritatis molestiae, 
-        corrupti, nesciunt eveniet incidunt rerum officiis non odit natus 
-        nostrum totam nam temporibus commodi eaque.</div>
-        <div>test</div>
+    <body id = "frame">
+        <div class="nav_bar" id = "menu_bar">
+            <button id = "menu_box"></button>
+            <span id ="name">CHOI SUNGGYU</span>
+        </div>
+
+        <div class="nav_bar" id="top_dummy"></div>
+
+        <div class="nav_bar" id="menu_panel">
+            <p class ='navbar_name'>CHOI SUNGGYU</p>
+            <button class ="menu_button" id ="menu_button1">그는 누구인가</button>
+            <button class ="menu_button" id ="menu_button2">어떤 삶을 살았는가</button>
+            <button class ="menu_button" id ="menu_button3">그의 야망은 어디까지인가</button>
+        </div>
+
+
+        <div class = "contents">
+            <div id ="about_myself">
+                <h1 class ="txt">WANTED</h1>
+                <img src="img/images.jpg">
+                <h3 class ="txt">DEAD OR ALIVE</h3>
+                <h2 class ="txt">NAME: 최성규</h2>
+                <h2 class ="txt">$68,000</h2>
+                <div id = 'sns_a'>
+                    <a href="https://youtube.com/@choi.s.g"><img id = "sns" src="img\icons8-유튜브-재생-50.svg" alt="유튜브"></a>
+                    <a href="https://www.instagram.com/bokomoblin/"><img id = "sns" src="img\icons8-인스-타-그램-50.svg" alt="인스타"></a>
+                </div>
+        
+                <div class ="txt" id="intro">
+                    인생 최대업적이 대학 입학과 
+                    육군병장 만기전역인 이녀석이 할 수 있는거라곤
+                    사회에 분란을 조장하는 것 밖에 없을것이다.
+                </div>
+                <div></div>
+                <div class ="txt" id="intro">
+                    <h3>그는 누구인가</h3>
+                    <p>강원대학교 2학년에 재학중인 그의 이름은 최성규.
+                        태어나서 20년동안 강원도 태백 깡시골에 갇혀있던 그는 중학교 재학 당시,
+                        재학중이던 학교가 정부 정책의 일환으로 소프트웨어교육 선도학교로 선정되게 된다.
+                        그는 당시 파이썬을 배우게되고, 그때부터 개발자가 되어 세계정복을 하기로 마음먹게 되는데...</p>
+                </div>
+            </div>
+            
+            <div id="wtf">
+                <h1 class ="txt">그는 어떤 삶을 살았는가</h1>
+                <img src="img/legendofzelda.jpg">
+                <div class ="txt" id ="genesis">
+
+                    그는 개발자가 되기 전부터 좋아하던 게임이 있었다.
+                    때는 2008년, 옆집에 놀러갔던 그는, 그집 누나가 닌텐도를 하고있는것을 보게된다.
+                    게임기란 물건을 처음 접한건 둘째치고, 당시 플레이하고있던 게임은 무려 세기의 명작으로 칭송받는 "젤다의 전설" 시리즈의 "몽환의 모래시계" 였다.
+                    그 후로 그는, 다른 젤다 시리즈를 하나씩 플레이 해 보면서 학창시절을 보내게 되고, 시간은 흐르고 흘러 때는 중학교 2학년.
+                    코딩을 배우게되고, 게임을 만들고 싶다는 원대한 꿈을 가지게 된다.
+                    그리고 고등학교에 들어가고, 꿈을 놓지않고 노력한 결과 강원대학교 컴퓨터공학과에 입학하게 된다.
+                    아직은 뭐 하나 이룬적 없는 고졸 밥버러지 대학생에 불과하지만, 그는 오늘도 세계정복의 원대한 꿈을 안고 오늘도 나아간다
+                    
+                    <h3>약력</h3>
+
+                    <ul>
+                        <h4>학력:</h4>
+                        <li>2014년 황지초등학교 졸</li>
+                        <li>2017년 황지중학교 졸</li>
+                        <li>2020년 황지고등학교 졸</li>
+                        <li>2020년 강원대학교 입학</li>
+                        <li>2021년 3월2일 입대</li>
+                        <li>2022년 9월1일 육군 병장 만기전역</li>
+                        <li>현재 강원대학교 재학중</li>
+                        <li>최종학력: 고졸</li>
+                    </ul>
+
+                    <ul>
+                        <h4>자격증:</h4>
+                        <li>태권도3단</li>
+                        <li>특공무술 2단</li>
+                        <li>운전면허증 1종보통</li>
+                    </ul>
+
+                        <ul>
+                            <h4>어학능력:</h4>
+                            <li>영어    -   의무교육12년</li>
+                            <li>일본어  -   나루토정주행 완</li>
+                        </ul>
+                    
+                    <ul>
+                        <h4>수상이력:</h4>
+                        <li>2019년 강원해커톤대회 입상</li>
+                    </ul>
+    
+                    <ul>
+                        <h4>가본나라:</h4>
+                        <li>2015년 중국</li>
+                        <li>2017년 미국(서부)</li>
+                        <li>2018년 미국(서부)</li>
+                        <li>2020년 태국</li>
+                        <li>2023년 일본</li>
+                    </ul>
+                    <h4>MBTI:       ENTJ</h4>
+                        
+                    </div>
+            </div>
+
+            <div id="wtf2">
+                <h1 class ="txt">그의 야망은 어디까지인가</h1>
+                <div class ="txt" >
+                    page3
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <a target="_blank" href="https://icons8.com/icon/37326/%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EC%9E%AC%EC%83%9D">youtube</a>
+            ,
+            <a target="_blank" href="https://icons8.com/icon/32292/%EC%9D%B8%EC%8A%A4-%ED%83%80-%EA%B7%B8%EB%9E%A8"> instagram</a>
+             icon by 
+            <a target="_blank" href="https://icons8.com">Icons8</a>
+        </div>
     </body>
 
 </html>
